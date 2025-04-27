@@ -39,7 +39,7 @@ if (model_no==1){
 if (model_no %in% c(1:2)){
   
   stanfit <- sampling(model_stan, 
-                      data = data_list[[province]], 
+                      data = data_list, 
                       warmup = iter_warmup_stan, 
                       iter = iter_warmup_stan+iter_sampling_stan, 
                       chains = 4,
@@ -55,7 +55,7 @@ if (model_no %in% c(1:2)){
   for (i in seq_len(no_district[province])){
     
     stanfit[[i]] <- sampling(model_stan, 
-                             data = data_list[[province]][[i]], 
+                             data = data_list[[i]], 
                              warmup = iter_warmup_stan, 
                              iter = iter_warmup_stan+iter_sampling_stan, 
                              chains = 4,
